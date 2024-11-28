@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/samsul1.png" type="image/png">
+    <title>Samsul Hidayat Portfolio</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<style type="text/css">
+    /* General Styles */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Navbar Responsiveness */
+@media (max-width: 447px) {
+    .navbar {
+        flex-direction: column; /* Sesuaikan arah layout */
+    }
+    .navbar-nav {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(45deg, rgba(0,171,221,1) 0%, rgba(0,29,109,1) 100%);
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Section Styling */
+.section {
+    height: auto;
+    padding: 50px 0;
+}
+
+/* Section Height Adjustment on Small Screens */
+@media (min-width: 768px) {
+    .section {
+        height: 100vh;
+    }
+}
+
+/* Footer Styling */
+.footer {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+}
+
+/* Scrolling Text */
+.scrolling-text-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    cursor: text;
+}
+
+.scrolling-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Image Styling */
+img {
+    max-width: 100%; /* Pastikan gambar tidak melewati lebar container */
+    max-height: 70vh; /* Maksimalkan tinggi gambar hingga 80% viewport */
+    object-fit: cover; /* Jaga proporsi tanpa memotong isi gambar */
+}
+
+/* Responsiveness for Images */
+@media (max-width: 768px) {
+    img {
+        max-height: 300px; /* Atur tinggi gambar lebih kecil untuk perangkat mobile */
+    }
+}
+
+@media (min-width: 769px) {
+    img {
+        max-height: 500px; /* Atur tinggi gambar lebih besar untuk desktop */
+    }
+}
+
+/* Accordion Button Hover Effects */
+.accordion-button:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Quote Symbol Styling */
+.quote-symbol {
+    font-size: 4rem;
+    font-family: 'BIZ UDMincho Medium', serif; /* Font serif untuk kesan elegan */
+    font-weight: bold; /* Tebal untuk kesan tegas */
+}
+
+/* Custom Background */
+.bg-custom {
+    background: linear-gradient(45deg, rgba(0,171,221,1) 0%, rgba(0,29,109,1) 100%);
+    color: white;
+}
+
+/* Team Custom Layout */
+.team-custom {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    gap: 5px;
+    padding: 0.4em;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.team-custom p {
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    background: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0.5em;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: flex 0.3s ease, background-size 0.3s ease;
+}
+
+.team-custom p::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.team-custom p span {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.team-custom p:hover {
+    flex: 3;
+    background-size: cover;
+}
+
+.team-custom p:hover span {
+    opacity: 1;
+}
+
+/* Background Images for Team Section */
+#team1 {
+    background-image: url('img/gawe (1).jpg');
+}
+
+#team2 {
+    background-image: url('img/gawe (2).jpg');
+}
+
+#team3 {
+    background-image: url('img/gawe (3).jpg');
+}
+
+#team4 {
+    background-image: url('img/gawe (4).jpg');
+}
+
+/* Needs Section Image Responsiveness */
+#needs .col-md-6 img {
+    max-width: 100%; /* Membuat gambar responsif di mobile */
+    height: auto; /* Menghindari pemotongan gambar */
+}
+
+/* Needs Section Responsiveness */
+@media (max-width: 768px) {
+    .row.align-items-center {
+        flex-direction: column; /* Menumpuk elemen secara vertikal pada mobile */
+    }
+
+    .col-md-6 {
+        width: 100%; /* Memastikan elemen menyesuaikan lebar pada perangkat mobile */
+        margin-bottom: 20px;
+    }
+
+    .row.g-3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card {
+        margin-bottom: 15px; /* Memberikan jarak antara cards */
+    }
+
+    .accordion-button {
+        font-size: 14px; /* Menyesuaikan ukuran font pada mobile */
+    }
+
+    .accordion-body {
+        font-size: 14px; /* Menyesuaikan ukuran font pada mobile */
+    }
+}
+
+/* Cards for Mobile */
+.card {
+    width: 100%; /* Memastikan kartu mengambil lebar penuh */
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Accordion Button Styles */
+.accordion-button {
+    font-size: 16px;
+    padding: 1rem;
+    text-align: left;
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    font-size: 14px;
+}
+
+/* Responsiveness for Larger Screens */
+@media (min-width: 768px) {
+    .accordion-button {
+        font-size: 18px;
+    }
+
+    .accordion-body {
+        font-size: 16px;
+    }
+}
+
+/* Footer Styling */
+footer {
+    padding: 20px;
+    background-color: #343a40;
+}
+
+footer .d-flex {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Footer Responsiveness */
+@media (max-width: 768px) {
+    footer .btn {
+        width: 100%;
+        margin-bottom: 10px; /* Memberikan jarak antar tombol pada mobile */
+    }
+
+    footer .d-flex {
+        flex-direction: column;
+    }
+
+    footer .small {
+        font-size: 12px; /* Menyesuaikan font size pada mobile */
+    }
+}
+
+/* Prevent Horizontal Overflow */
+html, body {
+    overflow-x: hidden; /* Menghindari konten keluar dari viewport */
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top">
+    <div class="container">
+        <!-- Logo Perusahaan -->
+        <a class="navbar-brand d-none d-md-block" href="#home">Samsul Hidayat</a>
+        <!-- Tombol Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#needs">What Your Needs?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#skill">My Skills</a>
+                </li>
+            </ul>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal" class="btn btn-warning btn-sm">Contact</a>
+            <a href="https://wa.me/6285389348802" class="btn btn-outline-light btn-sm ms-2">Hire Me</a>
+        </div>
+    </div>
+</nav>
+<!-- Modal Contact -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact & Social Media</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <!-- Tombol Email -->
+                    <a href="mailto:syamsulhidayat201094@gmail.com" class="btn btn-outline-primary">
+                        <i class="bi bi-envelope"></i> Email
+                    </a>
+                    <!-- Tombol WhatsApp -->
+                    <a href="https://wa.me/6285389348802" target="_blank" class="btn btn-outline-success">
+                        <i class="bi bi-whatsapp"></i> WhatsApp
+                    </a>
+                    <!-- Tombol TikTok -->
+                    <a href="https://www.tiktok.com/@samsul.hidayat_?is_from_webapp=1&sender_device=pc" target="_blank" class="btn btn-outline-dark">
+                        <i class="bi bi-tiktok"></i> TikTok
+                    </a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="container text-start text-md-start">
+        <div class="row align-items-center">
+            <div class="col-md-6 pt-5" data-aos="fade-right">
+                <h1>Hi, I'm <strong><span>Samsul Hidayat</span></strong></h1>
+                
+                <!-- Teks Animasi -->
+                <div class="scrolling-text-wrapper">
+                    <h1 class="scrolling-text">A <span id="scrolling-text" style="color: #ffc300;"></span></h1>
+                </div>
+                
+                <p class="lead">Saya seorang profesional logistik dengan pengalaman lebih dari 4 tahun. Keahlian saya meliputi analisis operasional, pengelolaan tim, dan inovasi distribusi barang.</p>
+                <a href="#" id="downloadCvButton" class="btn btn-warning" target="_blank">Download CV</a>
+                <a href="https://wa.me/6285389348802" class="btn btn-outline-light ms-2">Hire Me</a>
+            </div>
+            <div class="col-md-6 pt-5" data-aos="fade-up">
+                <img src="img/samsul1.png" alt="Samsul Hidayat" class="img-fluid rounded mx-auto d-block" style="max-height: 500px;">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about" class="section bg-light">
+    <div class="container" data-aos="fade-up">
+        <div class="row pt-5">
+            <!-- Gambar Samsul -->
+            <div class="col-md-6 pt-3 d-none d-md-block" data-aos="fade-right">
+                <img src="img/gawe (5).jpg" alt="Samsul Hidayat" class="img-fluid rounded d-flex justify-content-center align-items-center" style="height: 450px;">
+            </div>
+
+            <!-- Moto Kehidupan -->
+            <div class="col-md-6 pt-3" data-aos="fade-left">
+                <h2 class="">
+                    <span class="quote-symbol">"</span>
+                </h2>
+                <p class="fs-4">
+                    <em>"Ia yang bekerja lebih dari apa yang dibayar, suatu saat akan dibayar lebih dari apa yang dikerjakan"</em>
+                </p>
+                <p class="mt-4">
+                    <strong>Samsul Hidayat</strong><br>
+                    <span>Cikarang, Bekasi 2024</span>
+                </p>
+                <a href="https://wa.me/6285389348802" class="btn btn-warning">Hire Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Experience Section -->
+<section id="experience" class="section bg-light">
+    <div class="container pt-5" data-aos="fade-up">
+        <h2 class="pb-2 border-bottom text-center">Experience</h2>
+        <div class="row">
+            <!-- Gallery Section -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <div class="team-custom">
+                    <p id="team1"><span></span></p>
+                    <p id="team2"><span></span></p>
+                    <p id="team3"><span></span></p>
+                    <p id="team4"><span></span></p>
+                </div>
+
+            </div>
+
+            <!-- Experience Accordion -->
+            <div class="col-md-6">
+                <div class="accordion" id="experienceAccordion">
+                    <!-- PT. Balrich Logistics -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                PT. Balrich Logistics | Koordinator | 2020 - 2023
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#experienceAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Memastikan kelayakan kendaraan operasional.</li>
+                                    <li>Mengatur tim dan memberikan instruksi pengiriman.</li>
+                                    <li>Melakukan kontrol akhir pengiriman dan tagihan bulanan (invoice).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PT. BP Logistics -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                PT. BP Logistics | Koordinator | 2023 - 2024
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#experienceAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Membuat surat jalan dan invoice penagihan.</li>
+                                    <li>Memastikan kelayakan kendaraan operasional.</li>
+                                    <li>Mengatur tim dan memberikan instruksi pengiriman.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPX Express -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                SPX Express | Senior Analyst | 2024 - Sekarang
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#experienceAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Mengkonsolidasikan dan merangkum laporan kinerja driver secara keseluruhan setiap minggu dan bulanan untuk Manajemen SPX </li>
+                                    <li>Memantau proses inbound dan outbound, hingga ke 3PL dan section</li>
+                                    <li>Memastikan pekerjaan berjalan dengan baik sesuai SOP</li>
+                                    <li>Memantau proses Line houl distribusi barang</li>
+                                    <li>Berkoordinasi dengan Vendor terkait perputaran unite dan driver</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://wa.me/6285389348802" class="btn btn-outline-dark mt-4">Hire Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- What Can I Do Section -->
+<section class="section bg-light" id="needs">
+    <div class="container pt-5" data-aos="fade-up">
+        <div class="row align-items-center">
+            <!-- Gambar dan Judul -->
+            <div class="col-md-6" data-aos="fade-right">
+                <h2 class="text-center mb-4">What Can I Do For Your Needs</h2>
+                <p>
+                    Saya menawarkan berbagai layanan profesional yang dirancang untuk membantu Anda meningkatkan efisiensi 
+                    operasional, manajemen logistik, dan pemecahan masalah strategis.
+                </p>
+                <!-- Cards -->
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-4">
+                        <div class="card text-center shadow h-100">
+                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                <h3 class="card-title text-primary mb-2">98%</h3>
+                                <p class="card-text">Problem Solving</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="col-md-4">
+                        <div class="card text-center shadow h-100">
+                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                <h3 class="card-title text-success mb-2">4+</h3>
+                                <p class="card-text">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-md-4">
+                        <div class="card text-center shadow h-100">
+                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                <h3 class="card-title text-warning mb-2">150+</h3>
+                                <p class="card-text">Connections Figure</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Daftar Layanan -->
+            <div class="col-md-6 g-3" data-aos="fade-left">
+                <div class="accordion" id="servicesAccordion">
+                    <!-- Service 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="serviceOneHeading">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#serviceOne" aria-expanded="true" aria-controls="serviceOne">
+                                <i class="bi bi-graph-up-arrow me-2"></i> Operational Analysis
+                            </button>
+                        </h2>
+                        <div id="serviceOne" class="accordion-collapse collapse show" aria-labelledby="serviceOneHeading" data-bs-parent="#servicesAccordion">
+                            <div class="accordion-body">
+                                Saya menganalisis setiap aspek operasional Anda untuk menemukan solusi yang tepat demi meningkatkan efisiensi dan produktivitas.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="serviceTwoHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#serviceTwo" aria-expanded="false" aria-controls="serviceTwo">
+                                <i class="bi bi-truck me-2"></i> Logistics Management
+                            </button>
+                        </h2>
+                        <div id="serviceTwo" class="accordion-collapse collapse" aria-labelledby="serviceTwoHeading" data-bs-parent="#servicesAccordion">
+                            <div class="accordion-body">
+                                Pengelolaan logistik yang efisien, termasuk optimalisasi rute pengiriman dan manajemen dokumen, 
+                                untuk mendukung keberlanjutan bisnis Anda.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="serviceThreeHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#serviceThree" aria-expanded="false" aria-controls="serviceThree">
+                                <i class="bi bi-people me-2"></i> Team Leadership
+                            </button>
+                        </h2>
+                        <div id="serviceThree" class="accordion-collapse collapse" aria-labelledby="serviceThreeHeading" data-bs-parent="#servicesAccordion">
+                            <div class="accordion-body">
+                                Pengalaman memimpin tim dengan komunikasi yang efektif dan pemberdayaan anggota tim untuk mencapai hasil maksimal.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="serviceFourHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#serviceFour" aria-expanded="false" aria-controls="serviceFour">
+                                <i class="bi bi-receipt me-2"></i> Invoice and Billing Solutions
+                            </button>
+                        </h2>
+                        <div id="serviceFour" class="accordion-collapse collapse" aria-labelledby="serviceFourHeading" data-bs-parent="#servicesAccordion">
+                            <div class="accordion-body">
+                                Layanan pembuatan dan manajemen dokumen keuangan untuk memastikan kelancaran administrasi bisnis Anda.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Skill Section -->
+<section class="section bg-light" id="skill">
+    <div class="container pt-5" data-aos="fade-up">
+        <h2 class="border-bottom text-center"></h2>
+        <div class="row">
+            <!-- Technical Skills Section -->
+            <div class="col-md-6" data-aos="fade-right">
+                <h4>Technical Skills</h4>
+                <div class="accordion" id="technicalSkillsAccordion">
+                    <!-- Operational Efficiency -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOperationalEfficiency">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOperationalEfficiency" aria-expanded="true" aria-controls="collapseOperationalEfficiency">
+                                <i class="bi bi-gear me-2"></i> Operational Efficiency
+                            </button>
+                        </h2>
+                        <div id="collapseOperationalEfficiency" class="accordion-collapse collapse show" aria-labelledby="headingOperationalEfficiency" data-bs-parent="#technicalSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Fokus pada peningkatan efisiensi operasional melalui optimalisasi sumber daya dan pengurangan pemborosan dalam setiap tahapan logistik dan distribusi. Termasuk pengelolaan dan perencanaan rute yang efektif serta pengawasan pemeliharaan kendaraan.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Management -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTeamManagement">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTeamManagement" aria-expanded="true" aria-controls="collapseTeamManagement">
+                                <i class="bi bi-person-lines-fill me-2"></i> Team Management
+                            </button>
+                        </h2>
+                        <div id="collapseTeamManagement" class="accordion-collapse collapse" aria-labelledby="headingTeamManagement" data-bs-parent="#technicalSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Pengalaman memimpin tim, baik dalam pengelolaan operasional maupun pengawasan langsung terhadap tim lapangan. Mencakup pemetaan tanggung jawab, penjadwalan, serta penilaian kinerja secara rutin untuk memastikan pencapaian tujuan bersama.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logistics & Distribution -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingLogisticsDistribution">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLogisticsDistribution" aria-expanded="true" aria-controls="collapseLogisticsDistribution">
+                                <i class="bi bi-truck me-2"></i> Logistics & Distribution
+                            </button>
+                        </h2>
+                        <div id="collapseLogisticsDistribution" class="accordion-collapse collapse" aria-labelledby="headingLogisticsDistribution" data-bs-parent="#technicalSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Menguasai seluruh aspek distribusi mulai dari pengelolaan jalur distribusi, pengendalian proses logistik, hingga optimasi rute dan pengelolaan armada untuk memastikan pengiriman tepat waktu dan sesuai anggaran.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vendor Coordination -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingVendorCoordination">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVendorCoordination" aria-expanded="true" aria-controls="collapseVendorCoordination">
+                                <i class="bi bi-handshake me-2"></i> Vendor Coordination
+                            </button>
+                        </h2>
+                        <div id="collapseVendorCoordination" class="accordion-collapse collapse" aria-labelledby="headingVendorCoordination" data-bs-parent="#technicalSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Keahlian dalam berkolaborasi dengan pihak ketiga, termasuk vendor kendaraan dan mitra pengiriman untuk memastikan ketersediaan armada, perawatan kendaraan, dan pemenuhan syarat layanan dengan tingkat kualitas yang tinggi.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Monitoring -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPerformanceMonitoring">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePerformanceMonitoring" aria-expanded="true" aria-controls="collapsePerformanceMonitoring">
+                                <i class="bi bi-bar-chart-line me-2"></i> Performance Monitoring
+                            </button>
+                        </h2>
+                        <div id="collapsePerformanceMonitoring" class="accordion-collapse collapse" aria-labelledby="headingPerformanceMonitoring" data-bs-parent="#technicalSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Memiliki kemampuan untuk menganalisis dan memantau data kinerja operasional secara berkala, mengevaluasi pencapaian KPI, serta mengidentifikasi area untuk perbaikan yang dapat meningkatkan efisiensi dan produktivitas.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Skills Section -->
+            <div class="col-md-6" data-aos="fade-left">
+                <h4>Software Skills</h4>
+                <div class="accordion" id="softwareSkillsAccordion">
+                    <!-- Microsoft Word -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingMicrosoftWord">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMicrosoftWord" aria-expanded="true" aria-controls="collapseMicrosoftWord">
+                                <i class="bi bi-file-earmark-text me-2"></i> Microsoft Word
+                            </button>
+                        </h2>
+                        <div id="collapseMicrosoftWord" class="accordion-collapse collapse show" aria-labelledby="headingMicrosoftWord" data-bs-parent="#softwareSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Keahlian dalam mengolah dokumen, menyusun laporan, dan memastikan dokumen dapat diakses dan dibaca dengan format yang sesuai.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Microsoft Excel -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingMicrosoftExcel">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMicrosoftExcel" aria-expanded="true" aria-controls="collapseMicrosoftExcel">
+                                <i class="bi bi-table me-2"></i> Microsoft Excel
+                            </button>
+                        </h2>
+                        <div id="collapseMicrosoftExcel" class="accordion-collapse collapse" aria-labelledby="headingMicrosoftExcel" data-bs-parent="#softwareSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Kemampuan untuk mengolah data keuangan, analisis angka, dan pembuatan laporan yang kompleks dengan fungsi-fungsi tingkat lanjut seperti pivot tables dan formula keuangan.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email & Communication Tools -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEmailTools">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmailTools" aria-expanded="true" aria-controls="collapseEmailTools">
+                                <i class="bi bi-envelope me-2"></i> Email & Communication Tools
+                            </button>
+                        </h2>
+                        <div id="collapseEmailTools" class="accordion-collapse collapse" aria-labelledby="headingEmailTools" data-bs-parent="#softwareSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Keahlian dalam mengelola komunikasi melalui email dan alat komunikasi digital lainnya, baik untuk korespondensi internal maupun eksternal.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Presentation Tools -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPresentationTools">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePresentationTools" aria-expanded="true" aria-controls="collapsePresentationTools">
+                                <i class="bi bi-easel me-2"></i> Presentation Tools
+                            </button>
+                        </h2>
+                        <div id="collapsePresentationTools" class="accordion-collapse collapse" aria-labelledby="headingPresentationTools" data-bs-parent="#softwareSkillsAccordion">
+                            <div class="accordion-body">
+                                <p>Keahlian dalam menggunakan berbagai perangkat lunak presentasi untuk menyusun materi visual yang menarik dan efektif untuk komunikasi bisnis.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-dark text-light text-center">
+    <div class="text-center">
+        <!-- Tombol Email -->
+        <a href="mailto:syamsulhidayat201094@gmail.com" class="btn btn-primary">
+            <i class="bi bi-envelope"></i> Email
+        </a>
+        <!-- Tombol WhatsApp -->
+        <a href="https://wa.me/6285389348802" target="_blank" class="btn btn-success">
+            <i class="bi bi-whatsapp"></i> Whatsapp
+        </a>
+        <!-- Tombol TikTok -->
+        <a href="https://www.tiktok.com/@samsul.hidayat_?is_from_webapp=1&sender_device=pc" target="_blank" class="btn btn-light">
+            <i class="bi bi-tiktok"></i> TikTok
+        </a>
+    </div>
+    <div class="d-flex justify-content-center align-items-center py-4 mt-4 border-top border-secondary">
+        <p class="small">© 2024 Samsul Hidayat. All rights reserved.</p>
+    </div>
+</footer>
+<!-- Bootstrap JS and AOS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init();
+    const texts = [
+        "Senior Analyst",
+        "Logistics Expert",
+        "Operational Analyst"
+    ];
+
+    let textIndex = 0;
+    const scrollingText = document.getElementById("scrolling-text");
+
+    function typeText(text) {
+        let i = 0;
+        scrollingText.innerHTML = "";
+        const typingInterval = setInterval(() => {
+            scrollingText.innerHTML += text.charAt(i);
+            i++;
+            if (i === text.length) {
+                clearInterval(typingInterval);
+                setTimeout(() => {
+                    eraseText();
+                }, 500);
+            }
+        }, 100);
+    }
+
+    function eraseText() {
+        let text = scrollingText.innerHTML;
+        let i = text.length;
+        const erasingInterval = setInterval(() => {
+            scrollingText.innerHTML = text.substring(0, i - 1);
+            i--;
+            if (i === 0) {
+                clearInterval(erasingInterval);
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(() => {
+                    typeText(texts[textIndex]);
+                }, 300);
+            }
+        }, 50);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        typeText(texts[textIndex]);
+    });
+    document.getElementById("downloadCvButton").addEventListener("click", function (e) {
+        e.preventDefault(); // Mencegah tautan default
+        const link = document.createElement("a"); // Buat elemen <a> baru
+        link.href = "cv.pdf"; // Lokasi file
+        link.download = "CV_Samsul_Hidayat.pdf"; // Nama file yang diunduh
+        link.target = "_blank"; // Buka di tab baru
+        link.click(); // Trigger klik pada elemen <a> tersebut
+    });
+</script>
+</body>
+
+</html>
